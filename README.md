@@ -25,3 +25,7 @@ docker run -it \
     --container-host ${CONTAINER_HOST} \
     --docker-volume-basedir $(pwd)
 ```
+
+## Tips
+
+* If running in Docker Compose, be sure to add `--docker-network <compose_network>` to have SAM-created containers be able to talk to its network.
