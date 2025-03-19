@@ -16,9 +16,7 @@ docker build --build-arg SAM_CLI_VERSION=1.135.0 -t aws-sam-cli .
 export CONTAINER_HOST=host.docker.internal  # macOS
 export CONTAINER_HOST=172.17.0.1            # Linux
 
-docker run -it \
-    -v $(pwd):/sam \
-    aws-sam-cli \
+docker run -it -v $(pwd):/sam aws-sam-cli \
     local start-api \
     --host 0.0.0.0 \
     --container-host-interface 0.0.0.0 \
