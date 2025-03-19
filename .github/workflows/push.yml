@@ -1,0 +1,42 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: rhargreaves/aws-sam-cli
+  SAM_CLI_VERSION: 1.135.0
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args:
+            - SAM_CLI_VERSION=${{ env.SAM_CLI_VERSION }}
+          tags:
+            - ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.SAM_CLI_VERSION }}
+            - ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+
