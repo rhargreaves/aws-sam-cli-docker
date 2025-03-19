@@ -1,4 +1,7 @@
 # AWS SAM CLI Docker Image
+
+[![Build and Push Docker Image](https://github.com/rhargreaves/aws-sam-cli-docker/actions/workflows/push.yml/badge.svg)](https://github.com/rhargreaves/aws-sam-cli-docker/actions/workflows/push.yml)
+
 Docker image for the AWS SAM CLI
 
 ## Build
