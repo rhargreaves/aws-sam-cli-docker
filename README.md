@@ -26,4 +26,5 @@ docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/sam aws-s
 
 ## Tips
 
-* If running in Docker Compose, be sure to add `--docker-network <compose_network>` to have SAM-created containers be able to talk to its network.
+* If running in Docker Compose, be sure to add `--docker-network <compose_network>` to have SAM-created containers be able to talk to its network
+* To refer to a complete stack using the `sam local start-api` feature and this image, see [rhargreaves/dog-walking](https://github.com/rhargreaves/dog-walking)
